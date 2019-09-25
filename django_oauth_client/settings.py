@@ -16,15 +16,18 @@ import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+ALLOWED_HOSTS = ['django-oauth-client.herokuapp.com', 'localhost']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!&3nclc7myn7$df_5u3dg09nnppk$+g^(gb^@ajh_1xqu#w9%*'
+# SECRET_KEY = '!&3nclc7myn7$df_5u3dg09nnppk$+g^(gb^@ajh_1xqu#w9%*'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '!&3nclc7myn7$df_5u3dg09nnppk$+g^(gb^@ajh_1xqu#w9%*')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = []
 
@@ -149,8 +152,9 @@ LOGIN_URL = 'login'
 
 LOGOUT_REDIRECT_URL = 'home'
 
-#OAUTH_SERVER_BASEURL = 'https://django-oauth-server.herokuapp.com'
-OAUTH_SERVER_BASEURL = 'http://localhost:8001'
+# OAUTH_SERVER_BASEURL = 'https://django-oauth-server.herokuapp.com'
+# OAUTH_SERVER_BASEURL = 'http://localhost:8001'
+OAUTH_SERVER_BASEURL = os.environ.get('DJANGO_OAUTH_SERVER_BASEURL', 'http://localhost:8001')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
