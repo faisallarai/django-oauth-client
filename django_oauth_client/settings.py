@@ -156,6 +156,12 @@ LOGOUT_REDIRECT_URL = 'home'
 # OAUTH_SERVER_BASEURL = 'http://localhost:8001'
 OAUTH_SERVER_BASEURL = os.environ.get('DJANGO_OAUTH_SERVER_BASEURL', 'http://localhost:8001')
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = os.environ.get('DJANGO_EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
+EMAIL_HOST = os.environ.get('DJANGO_EMAIL_HOST')
+EMAIL_HOST_USER = os.environ.get('DJANGO_EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('DJANGO_EMAIL_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 django_heroku.settings(locals())
