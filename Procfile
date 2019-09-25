@@ -1,3 +1,3 @@
 
-release: ./release-tasks.sh
+release: python manage.py migrate
 web: gunicorn django_oauth_client.wsgi
