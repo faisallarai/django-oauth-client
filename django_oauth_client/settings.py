@@ -150,7 +150,9 @@ LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'home'
 
 #OAUTH_SERVER_BASEURL = 'https://django-oauth-server.herokuapp.com'
-OAUTH_SERVER_BASEURL = 'http://localhost:8001'
+#OAUTH_SERVER_BASEURL = 'http://localhost:8001'
+
+os.environ.setdefault("OAUTH_SERVER_BASEURL", "http://localhost:8001")
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
